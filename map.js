@@ -10,23 +10,9 @@ export default function (data, indicator,year) {
     },
 
     layer: [
-      // {
-      //   data: { values: data,name:"myData" },
-
-      //   selection: {
-      //     categoriesSelection: {
-      //       type: "single",
-      //       fields: ["Category"],
-      //       bind: {
-      //         input: "select",
-      //       },
-      //     },
-      //   },
-      //   mark:"text"
-      // },
       {
         data: {
-          url: "https://raw.githubusercontent.com/JimXiongyuWang/FIT3179Week9Homework/main/js/ne_110m.json",
+          url: "https://raw.githubusercontent.com/JimXiongyuWang/FIT3179Assignment2/main/ne_110m.json",
           format: {
             type: "topojson",
             feature: "ne_110m_graticules_30",
@@ -40,7 +26,7 @@ export default function (data, indicator,year) {
       },
       {
         data: {
-          url: "https://raw.githubusercontent.com/JimXiongyuWang/FIT3179Week9Homework/main/js/ne_110m_ocean.json",
+          url: "https://raw.githubusercontent.com/JimXiongyuWang/FIT3179Assignment2/main/ne_110m_ocean.json",
           format: {
             type: "topojson",
             feature: "oceans",
@@ -53,7 +39,7 @@ export default function (data, indicator,year) {
       },
       {
         data: {
-          url: "https://raw.githubusercontent.com/JimXiongyuWang/FIT3179Week9Homework/main/js/ne_110m.json",
+          url: "https://raw.githubusercontent.com/JimXiongyuWang/FIT3179Assignment2/main/ne_110m.json",
           format: {
             type: "topojson",
             feature: "ne_110m_admin_0_countries",
