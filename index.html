@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=false"
+    />
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.15.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.2"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <style>
+      main {
+        margin: 10px 8%;
+      }
+      section {
+        margin: 20px 0px;
+       
+      }
+    </style>
+    <main>
+      <style>
+        .title {
+          text-align: center;
+          font-size: 40px;
+          margin: 10px 10px;
+        }
+      </style>
+
+      <div class="title">Death by unhealty</div>
+
+      <!-- part1 -->
+      <style>
+        #part1 #map {
+          height: 50vh;
+          width: 100%;
+        }
+        #part1 {
+          display: grid;
+          grid-template-columns: 40% 60%;
+          column-gap: 20px;
+        }
+        #part1 p {
+          border: 1px solid lightgray;
+          border-radius: 20px;
+          height: 50vh;
+          padding: 20px;
+        }
+      </style>
+      <section id="part1">
+        <div class="annotation">
+          <p>This map showcases mortality rates from various health-related causes over different years. Users can filter by year and cause. Although China often shows the highest numbers, it's crucial to remember China's large population. These absolute figures reflect its population size, and the actual rates might be in line with or even lower than other nations.</p>
+        </div>
+        <div>
+          <div class="categoryFilters"></div>
+          <div class="yearFilters"></div>
+          <div id="map"></div>
+        </div>
+      </section>
+
+      <!-- part2 -->
+      <style>
+        #part2 #bar {
+          width: 100%;
+          height: 50vh;
+
+        }
+      </style>
+      <section id="part2">
+        <div><h2>Region Death Overview</h2></div>
+        <div id="regionFilter"></div>
+        <div id="bar"></div>
+      </section>
+
+      <!-- part3 -->
+      <style>
+        #part3 {
+          display: grid;
+          grid-template-columns: 70% 30%;
+          column-gap: 20px;
+        }
+        #part3 #river {
+          height: 50vh;
+          width: 100%;
+        }
+        #part3 .annotation {
+          border: 1px solid lightgray;
+          border-radius: 20px;
+          padding: 20px;
+        }
+      </style>
+      <section id="part3">
+        <div>
+          <div id="river"></div>
+        </div>
+        <div class="annotation">Annotation</div>
+      </section>
+
+      <!-- part4 -->
+      <style>
+        #part4 {
+          display: grid;
+          grid-template-columns: 30% 70%;
+          column-gap: 20px;
+        }
+        #part4 #line {
+          height: 50vh;
+          width: 100%;
+        }
+        #part4 .annotation {
+          border: 1px solid lightgray;
+          border-radius: 20px;
+          padding: 20px;
+        }
+      </style>
+      <section id="part4">
+        <div class="annotation">This graph illustrates the trend in causes of death from 1990 to 2019. It clearly indicates that high blood pressure, smoking, and high fasting plasma glucose have seen rapid increases over these two decades, cumulatively affecting over a hundred million people annually. Each of us needs to give due attention to these factors, as they might be silently claiming the lives of our loved ones or us</div>
+        <div id="line"></div>
+      </section>
+    </main>
+    <script src="index.js" type="module"></script>
+  </body>
+</html>
