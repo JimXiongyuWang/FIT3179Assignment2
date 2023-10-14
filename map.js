@@ -1,5 +1,4 @@
- 
-export default function (data, indicator,year) {
+export default function map(data, indicator, year) {
   let maps = {
     $schema: "https://vega.github.io/schema/vega-lite/v5.json",
     title: `Deaths by ${indicator} based on Country (${year})  `,
@@ -12,7 +11,7 @@ export default function (data, indicator,year) {
     layer: [
       {
         data: {
-          url: "https://raw.githubusercontent.com/JimXiongyuWang/FIT3179Assignment2/main/ne_110m.json",
+          url: "https://raw.githubusercontent.com/JimXiongyuWang/FIT3179Week9Homework/main/js/ne_110m.json",
           format: {
             type: "topojson",
             feature: "ne_110m_graticules_30",
@@ -26,7 +25,7 @@ export default function (data, indicator,year) {
       },
       {
         data: {
-          url: "https://raw.githubusercontent.com/JimXiongyuWang/FIT3179Assignment2/main/ne_110m_ocean.json",
+          url: "https://raw.githubusercontent.com/JimXiongyuWang/FIT3179Week9Homework/main/js/ne_110m_ocean.json",
           format: {
             type: "topojson",
             feature: "oceans",
@@ -39,7 +38,7 @@ export default function (data, indicator,year) {
       },
       {
         data: {
-          url: "https://raw.githubusercontent.com/JimXiongyuWang/FIT3179Assignment2/main/ne_110m.json",
+          url: "https://raw.githubusercontent.com/JimXiongyuWang/FIT3179Week9Homework/main/js/ne_110m.json",
           format: {
             type: "topojson",
             feature: "ne_110m_admin_0_countries",
@@ -65,9 +64,9 @@ export default function (data, indicator,year) {
           color: {
             field: "Value",
             type: "quantitative",
-            scale:{
-              range:["#F5E8B7","#CD5C08"]
-            }
+            scale: {
+              schema: "greens",
+            },
           },
 
           tooltip: [

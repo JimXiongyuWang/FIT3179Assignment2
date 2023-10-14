@@ -1,5 +1,5 @@
-const country = "China";
-export default function (data, indicator) {
+
+export default function bar(data, indicator) {
   let chart_json = {
     $schema: "https://vega.github.io/schema/vega-lite/v5.json",
     title: `Region death Overview `,
@@ -34,7 +34,7 @@ export default function (data, indicator) {
     },
     layer: [
       {
-        mark:{type: "bar" ,fill:"#6A9C89" },
+        mark: { type: "bar", fill: "#6A9C89" },
       },
       {
         mark: { type: "line", stroke: "#CD5C08" },

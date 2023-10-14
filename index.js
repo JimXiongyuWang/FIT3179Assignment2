@@ -1,12 +1,16 @@
-import map from "./map.js";
-import bar from "./bar.js";
-import river from "./river.js";
-import line from "./line.js";
-d3.csv("./number-of-deaths-by-risk-factor.csv").then((data) => {
+import bar from './bar.js'
+import river from './river.js'
+import map from './map.js'
+import lsotype from './lsotype.js'
+d3.text(
+  "https://raw.githubusercontent.com/JimXiongyuWang/Week10HomeWork/main/number-of-deaths-by-risk-factor.csv"
+).then((data) => {
+  data = d3.csvParse(data);
   data = pivot_data(data);
   addCategorySelections(data);
   let mapData = data.filter(
-    (d) => d.Year === "1990" && d.Category === "high systolic blood pressure"
+    (d) =>
+      d.Year === "1990" && d.Category === "high systolic blood pressure"
   );
   let mapJson = map(mapData, "high systolic blood pressure", "1990");
 
@@ -15,14 +19,32 @@ d3.csv("./number-of-deaths-by-risk-factor.csv").then((data) => {
   let barJson = bar(data, "Total");
 
   vegaEmbed("#bar", barJson);
+  let categoryOptions = [...new Set(data.map((d) => d.Category))];
 
-  let riverJson = river(data, "Total");
+  let riverJson = river(data, "Total", categoryOptions);
   vegaEmbed("#river", riverJson);
 
-  let lineJson = line(data, "Total");
-  vegaEmbed("#line", lineJson);
+  let lsotypedata = handelLsoTypeData(data);
+  let lsotypeJson = lsotype(lsotypedata, "", "1990");
+  vegaEmbed("#lsotype", lsotypeJson);
 });
 
+//the function to select sum of death for each reason's top 3
+function handelLsoTypeData(data, year = "1990") {
+
+  
+  let lsoData = data.filter((d) => d.Year === year);
+  let lsoDataAggregate = d3.rollups(
+    lsoData,
+    (d) => d3.sum(d, (v) => v.Value),
+    (d) => d.Category
+  );
+  lsoDataAggregate.sort((a, b) => (a[1] > b[1] ? -1 : 1));
+  let top3keys = lsoDataAggregate.slice(0, 3).map((d) => d[0]);
+  lsoData = lsoData.filter((d) => top3keys.includes(d.Category));
+  lsoData.sort((a, b) => (a.Country > b.Country ? -1 : 1));
+  return lsoData;
+}
 function pivot_data(data) {
   let pivot_data = [];
   let keys = Object.keys(data[0]);
@@ -87,7 +109,17 @@ function addCategorySelections(data) {
 
     vegaEmbed("#map", mapJson);
   });
+  let lsotypeFilter = d3.select("#lsotypeFilter").append("select");
+  add_selection(lsotypeFilter, years);
 
+  lsotypeFilter.on("change", (event) => {
+    // update lso type chart
+    year = event.target.value;
+    let lsotypedata = handelLsoTypeData(data, year);
+
+    let lsotypeJson = lsotype(lsotypedata, "", year);
+    vegaEmbed("#lsotype", lsotypeJson);
+  });
   let regions = [...new Set(data.map((d) => d.Country))];
   let regionSelection = d3.select("#regionFilter").append("select");
   let region = regions[0];
