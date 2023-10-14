@@ -18,6 +18,28 @@
             padding: 0;
             box-sizing: border-box;
         }
+        .background-section {
+    width: 100%;         /* Set the width as per requirement */
+    height: 400px;       /* Set height */
+    background-image: url('background.jpg');
+    background-size: cover;   /* Cover the section with the image */
+    background-position: center; /* Center the background image */
+    display: flex;        /* Flexbox to center the annotation */
+    justify-content: center;  /* Center annotation horizontally */
+    align-items: center;      /* Center annotation vertically */
+}
+
+.annotation-content {
+    font-size: 20px;   /* Set font size */
+    color: white;      /* Set font color, maybe white for visibility on a dark background */
+    text-align: center; /* Ensure text is centered */
+    padding: 10px;     /* Add some padding */
+    background-color: rgba(0,0,0,0.5); /* Optional: A semi-transparent black background for better readability */
+}
+
+
+
+
 
         body {
             border: 10vw solid rgba(81, 72, 23, 0.5);
