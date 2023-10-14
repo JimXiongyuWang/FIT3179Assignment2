@@ -11,19 +11,25 @@ export default function river(data, indicator, categories) {
     mark: "area",
     params: [
       {
-        name: "Legend",
-        select: { type: "point", fields: ["Category"] },
-        bind: "legend",
+          name: "Legend",
+          select: { type: "point", fields: ["Category"] },
+          bind: "legend",
       },
       {
-        name: "CategorySelect", // 修改为不同的名称
-        select: { type: "point", fields: ["Category"] },
-        bind: {
-          input: "select",
-          options: ["All Reason", ...categories],
-        },
+          name: "CategorySelect",
+          select: { type: "point", fields: ["Category"] },
+          bind: {
+              input: "select",
+              options: [null, ...categories], // Assuming 'categories' is an array of category values.
+              name: "Death reasons",
+              labels: [
+                  "All",
+                  ...categories 
+              ],
+          },
       },
-    ],
+  ],
+
     transform: [{ filter: { param: "CategorySelect" } }], // 使用正确的参数名称
     encoding: {
       x: {

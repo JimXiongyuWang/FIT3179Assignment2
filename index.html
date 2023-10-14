@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=false"
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=false"
     />
     <title>Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
@@ -13,145 +13,172 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
     <style>
-      * {
-        margin: 0;
-        box-sizing: border-box;
-      }
-    </style>
-
-<style>
-  /* 设置整个页面的背景 */
-  body {
-    border: px solid rgba(81, 72, 23, 0.5);
-    background-color: rgba(81, 72, 23, 0.5);
-      background-image: url('your-background-image.jpg'); /* 背景图片的URL */
-      background-size: cover; /* 背景图片的尺寸设置为覆盖整个屏幕 */
-      background-repeat: no-repeat; /* 防止背景图片重复 */
-      background-attachment: fixed; /* 固定背景图片，使其不随页面滚动而滚动 */
-  }
-
-  /* 添加其他样式或内容 */
-  .content {
-      /* 其他页面元素的样式 */
-  }
-</style>
-
-  </head>
-  <body>
-    <style>
-      section {
-        margin: 20px 0px;
-      }
-      #chart {
-        margin: 10px 5%;
-      }
-    </style>
-    <main id="chart">
-      <style>
-        .title {
-          text-align: center;
-          font-size: 40px;
-          margin: 10px 10px;
-          font-family: "Helvetica", sans-serif; /* 设置字体 */
-          color: #4d5113; /* 设置颜色，这里是红色 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      </style>
-      
-      <div class="title">Death by unhealty</div>
-      
 
-      <!-- part1 -->
-      <style>
+        body {
+            border: 10vw solid rgba(81, 72, 23, 0.5);
+           
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: "Helvetica", sans-serif;
+        }
+
+        .content {
+            padding: 2vh 2vw;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 4vw;
+            margin: 2vh 0;
+            color: #4d5113;
+        }
+
+        section {
+            margin: 2vh 0;
+            padding: 2vh 2vw;
+            border: 1px solid rgb(38, 176, 165);
+            border-radius: 2vw;
+        }
+
+        #chart {
+            margin: 2vh 5%;
+        }
+
         #part1 #map {
-          height: 50vh;
-          width: 100%;
+            height: 50vh;
+            width: 100%;
         }
 
         #part1 p {
-          border: 1px solid lightgray;
-          border-radius: 20px;
-          height: 50vh;
-          padding: 20px;
+            border: 1px solid lightgray;
+            border-radius: 2vw;
+            height: 50vh;
+            padding: 2vw;
         }
-      </style>
-      <section id="part1" style="border: 1px solid lightgray; padding: 10px">
-        <div>
-          <div class="categoryFilters"></div>
-          <div class="yearFilters"></div>
-          <div id="map"></div>
-        </div>
-      </section>
-      <!-- part2 -->
-      <style>
-        #part4 {
-          display: grid;
-          grid-template-columns: 30% 70%;
-          column-gap: 20px;
-          height: 750px;
-          border: 1px solid lightgray;
-          padding: 10px;
-        }
-        #part4 #lsotype {
-          height: 50vh;
-          width: 100%;
-        }
-        #part4 .annotation {
-          padding: 20px;
-          height: 750px;
-        }
-      </style>
-      <section id="part4">
-        <div class="annotation">annotation</div>
-        <div>
-          <div id="lsotypeFilter"></div>
-          <div id="lsotype"></div>
-        </div>
-      </section>
 
-      <!-- part3 -->
-      <style>
         #part2 #bar {
-          width: 100%;
-          height: 50vh;
-
-          padding: 10px;
+            width: 100%;
+            height: 50vh;
+            padding: 2vh 2vw;
         }
-      </style>
-      <section id="part2" style="border: 1px solid lightgray; padding: 10px">
+
+        #part3 {
+            display: grid;
+            grid-template-columns: 70% 30%;
+            column-gap: 2vw;
+            border: 1px solid lightgray;
+            border-radius: 2vw;
+            padding: 2vh 2vw;
+        }
+
+        #part5 {
+            display: grid;
+            text-align: center;
+            column-gap: 2vw;
+            border: 1px solid lightgray;
+            border-radius: 2vw;
+            padding: 2vh 2vw;
+        }
+
+        #part5 .annotation {
+          display: inline-block;
+        }
+        #part3 #river {
+            height: 50vh;
+            width: 100%;
+        }
+
+        #part3 .annotation {
+            border-radius: 2vw;
+            padding: 2vh 2vw;
+        }
+
+        #part4 {
+            overflow-x: hidden;  /* 隐藏水平方向的超出部分 */
+            overflow-y: auto;    /* 垂直方向超出时显示滚动条 */
+            display: grid;
+            grid-template-columns: 30% 70%;
+            column-gap: 2vw;
+            border: 1px solid rgb(38, 176, 165);
+            border-radius: 2vw;
+            padding: 2vh 2vw;
+        }
+
+        #part4 #lsotype {
+            height: 50vh;
+            width: 100%;
+        }
+        
+    </style>
+</head>
+<body>
+<main id="chart">
+    <div class="title">Death by unhealthy</div>
+
+    <!-- part1 -->
+    <section id="part1">
+        <div>
+            <div class="categoryFilters"></div>
+            <div class="yearFilters"></div>
+            <div id="map"></div>
+        </div>
+    </section>
+     <!-- part5 -->
+     <section id="part5">
+      <div class="annotation"><span style="font-family: 'Georgia', sans-serif;"><span style="color: rgb(197, 33, 115);"><span style="font-size: 3em;">T</span></span></span>his map showcases <strong>mortality rates</strong> from various health-related causes over different years. Users can filter by year and cause. Although China often shows the highest numbers, it's crucial to remember China's large population. These absolute figures reflect its <strong>population size</strong>, and the actual rates might be in line with or even lower than other nations.</div>
+   
+     </section>
+
+        <!-- part4 -->
+        <section id="part4">
+         
+          <div>
+              <div id="lsotypeFilter"></div>
+              <div id="lsotype"></div>
+          </div>
+      </section>
+        <!-- part5 -->
+         <section id="part5">
+         <div class="annotation"> <span style="font-family: 'Georgia', sans-serif;"><span style="color: rgb(197, 33, 115);"><span style="font-size: 3em;">F</span></span></span>rom 1990 to 2019, spanning thirty years, the top three causes of death remained 
+          <strong>high systolic blood pressure</strong>, <strong>smoking</strong>, and <strong>air pollution</strong> 
+          for the first twenty-nine years. It wasn't until 2019 that the third spot was taken over by 
+          <strong>high fasting plasma glucose</strong>. This data suggests that many causes of death are 
+          not fully understood by the public, such as blood pressure.</div>
+        
+      </section>
+
+
+
+      
+    <!-- part2 -->
+    <section id="part2">
         <div><h2>Region Death Overview</h2></div>
         <div id="regionFilter"></div>
         <div id="bar"></div>
-      </section>
-
-      <!-- part4 -->
-      <style>
-        #part3 {
-          display: grid;
-          grid-template-columns: 70% 30%;
-          column-gap: 20px;
-
-          border: 1px solid lightgray;
-          padding: 10px;
-        }
-        #part3 #river {
-          height: 50vh;
-          width: 100%;
-        }
-        #part3 .annotation {
-          border-radius: 20px;
-          padding: 20px;
-        }
-      </style>
-      <section id="part3">
+    </section>
+    </section>
+     <!-- part5 -->
+      <section id="part5">
+     <div class="annotation"> <span style="font-family: 'Georgia', sans-serif;"><span style="color: rgb(197, 33, 115);"><span style="font-size: 3em;">T</span></span></span>he dimensions of this <strong>chart</strong> are based on <strong>countries</strong>, summing up the total deaths from various causes. In some nations, such as <strong>Afghanistan</strong>, the numbers have been growing slowly, while in <strong>Angola</strong> there was a decline starting from 1995. The underlying reasons for these trends are intricate, contributing to the <span style="font-size: 1.9em;"><span style="color: orange;"><strong>beauty of our world</strong></span></span>.</div>
+  
+    </section>
+    <!-- part3 -->
+    <section id="part3">
         <div>
-          <div id="river"></div>
+            <div id="river"></div>
         </div>
-        <div class="annotation">Annotation</div>
-      </section>
-    </main>
-    <script type="module" src="index.js">
-   
-     
-    </script>
-  </body>
+        <div class="annotation"><span style="font-family: 'Georgia', sans-serif;"><span style="color: rgb(197, 33, 115);"><span style="font-size: 3em;">T</span></span></span>his chart depicts the <strong>trends</strong> of various causes of death over the past thirty years. The <strong>dropdown menu</strong> below allows for the selection of either all causes or any specific one. Many causes, such as <strong>alcohol intoxication</strong>, are on the rise, while others like <strong>child wasting</strong> have been decreasing year by year. This indicates that our world is <strong>slowly improving</strong>, at least in terms of children not going hungry.
+        </div></div>
+    </section>
+
+
+</main>
+<script type="module" src="index.js"></script>
+</body>
 </html>
