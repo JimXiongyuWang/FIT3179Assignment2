@@ -70,6 +70,7 @@
         html {
             margin: 0;
             padding: 0;
+            background-color: #E6E6FA; 
         }
 
         body,
@@ -123,7 +124,16 @@
             display: grid;
             grid-template-columns: 70% 30%;
             column-gap: 2vw;
-            border: 1px solid lightgray;
+            border-radius: 2vw;
+            padding: 2vh 2vw;
+        }
+
+        #part3 #river {
+            height: 50vh;
+            width: 100%;
+        }
+
+        #part3 .annotation {
             border-radius: 2vw;
             padding: 2vh 2vw;
         }
@@ -141,15 +151,7 @@
             display: inline-block;
         }
 
-        #part3 #river {
-            height: 50vh;
-            width: 100%;
-        }
-
-        #part3 .annotation {
-            border-radius: 2vw;
-            padding: 2vh 2vw;
-        }
+        
 
         #part4 {
             overflow-x: hidden;
@@ -173,7 +175,7 @@
 
 <body>
     <div class="header-background">
-        Death can be our teacher, imparting knowledge to us.
+        Death can be our mentor, imparting knowledge to us.
 
     </div>
 
@@ -184,7 +186,7 @@
         </div>
 
 
-        <div class="title">Death</div>
+        <div class="title">Deaths by risk factor</div>
 
         <!-- part1 -->
         <section id="part1">
@@ -265,7 +267,12 @@
             </div>
             </div>
         </section>
+        <section id="part5">
+            <div class="annotation"> 
+                This visualisation is created by Xiongyu Wang. The databset is <a href="https://ourworldindata.org/grapher/number-of-deaths-by-risk-factor" target="_blank">Our World In data</a>.
+                       </div>
 
+        </section>
 
     </main>
     <script type="module" src="index.js"></script>
