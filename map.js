@@ -70,7 +70,7 @@ export default function map(data, indicator, year) {
           },
 
           tooltip: [
-            { field: "properties.NAME", type: "nominal" },
+          
             { field: "Country", type: "nominal" },
             { field: "Value", type: "quantitative" },
           ],

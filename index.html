@@ -159,7 +159,7 @@
             overflow-y: auto;
             /* 垂直方向超出时显示滚动条 */
             display: grid;
-            grid-template-columns: 30% 70%;
+            grid-template-columns: 70% 30%;
             column-gap: 2vw;
             border: 1px solid rgb(38, 176, 165);
             border-radius: 2vw;
@@ -168,7 +168,13 @@
 
         #part4 #lsotype {
             height: 50vh;
+            display: block;
             width: 100%;
+        }
+
+        #part4 .annotation {
+            border-radius: 2vw;
+            padding: 2vh 2vw;
         }
     </style>
 </head>
@@ -213,6 +219,8 @@
             <div>
                 <div id="lsotypeFilter"></div>
                 <div id="lsotype"></div>
+                
+                
             </div>
         </section>
         <!-- part5 -->
